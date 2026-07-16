@@ -1,0 +1,17 @@
+name: CI
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  esteira:
+    uses: tiago-linhares-learning/esteiras/.github/workflows/ci-srv-java.yml@main
+    with:
+      java-version: "21"
+      publicar: ${{ github.event_name != 'pull_request' }}
+      docker: true
+    secrets:
+      NEXUS_MAVEN_USER: ${{ secrets.NEXUS_MAVEN_USER }}
+      NEXUS_MAVEN_PASS: ${{ secrets.NEXUS_MAVEN_PASS }}

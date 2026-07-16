@@ -1,0 +1,14 @@
+name: CD
+on:
+  workflow_dispatch:
+    inputs:
+      ambiente:
+        type: choice
+        options: [DEV, HOM, PRD]
+        default: DEV
+
+jobs:
+  esteira:
+    uses: tiago-linhares-learning/esteiras/.github/workflows/cd-bff-node.yml@main
+    with:
+      ambiente: ${{ inputs.ambiente }}

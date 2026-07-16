@@ -1,0 +1,16 @@
+name: CI
+on:
+  push:
+    branches: [$default-branch]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  esteira:
+    uses: tiago-linhares-learning/esteiras/.github/workflows/ci-bff-node.yml@main
+    with:
+      node-version: "20"
+      publicar: ${{ github.event_name != 'pull_request' }}
+      docker: true
+    secrets:
+      NEXUS_NPM_TOKEN: ${{ secrets.NEXUS_NPM_TOKEN }}

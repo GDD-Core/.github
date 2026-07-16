@@ -1,0 +1,6 @@
+{
+  "name": "Esteira CD — bff-node (BIAtech simulada)",
+  "description": "DEPLOY GitOps simulado: subscription, ArgoCD config/values/sync/status.",
+  "iconName": "octicon gear",
+  "categories": ["Node"]
+}

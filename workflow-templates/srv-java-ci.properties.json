@@ -1,0 +1,6 @@
+{
+  "name": "Esteira CI — srv-java (BIAtech simulada)",
+  "description": "BUILD: infos do projeto, build+testes, Fortify, Sonar gate 90%, Mend, publish Nexus, Docker, ACS.",
+  "iconName": "octicon gear",
+  "categories": ["Java"]
+}
