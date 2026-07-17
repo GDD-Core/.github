@@ -12,6 +12,19 @@ jobs:
       java-version: "21"
       publicar: ${{ github.event_name != 'pull_request' }}
       docker: true
+      registry: registry.meucardapioqrcode.com.br
+      docker-push: ${{ github.event_name != 'pull_request' }}
     secrets:
       NEXUS_MAVEN_USER: ${{ secrets.NEXUS_MAVEN_USER }}
       NEXUS_MAVEN_PASS: ${{ secrets.NEXUS_MAVEN_PASS }}
+      NEXUS_DOCKER_USER: ${{ secrets.NEXUS_DOCKER_USER }}
+      NEXUS_DOCKER_PASS: ${{ secrets.NEXUS_DOCKER_PASS }}
+
+  gitops:
+    if: ${{ github.event_name != 'pull_request' }}
+    needs: esteira
+    uses: tiago-linhares-learning/esteiras/.github/workflows/gitops-deploy.yml@main
+    with:
+      chart: srv-java
+    secrets:
+      ESTEIRA_CONFIG_PAT: ${{ secrets.ESTEIRA_CONFIG_PAT }}

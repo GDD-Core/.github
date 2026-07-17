@@ -12,5 +12,18 @@ jobs:
       node-version: "20"
       publicar: ${{ github.event_name != 'pull_request' }}
       docker: true
+      registry: registry.meucardapioqrcode.com.br
+      docker-push: ${{ github.event_name != 'pull_request' }}
     secrets:
       NEXUS_NPM_TOKEN: ${{ secrets.NEXUS_NPM_TOKEN }}
+      NEXUS_DOCKER_USER: ${{ secrets.NEXUS_DOCKER_USER }}
+      NEXUS_DOCKER_PASS: ${{ secrets.NEXUS_DOCKER_PASS }}
+
+  gitops:
+    if: ${{ github.event_name != 'pull_request' }}
+    needs: esteira
+    uses: tiago-linhares-learning/esteiras/.github/workflows/gitops-deploy.yml@main
+    with:
+      chart: bff-node
+    secrets:
+      ESTEIRA_CONFIG_PAT: ${{ secrets.ESTEIRA_CONFIG_PAT }}
