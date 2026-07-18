@@ -7,7 +7,7 @@ on:
 
 jobs:
   esteira:
-    uses: tiago-linhares-learning/esteiras/.github/workflows/ci-srv-java.yml@main
+    uses: GDD-Core/esteiras/.github/workflows/ci-srv-java.yml@main
     with:
       java-version: "21"
       publicar: ${{ github.event_name != 'pull_request' }}
@@ -23,7 +23,7 @@ jobs:
   gitops:
     if: ${{ github.event_name != 'pull_request' }}
     needs: esteira
-    uses: tiago-linhares-learning/esteiras/.github/workflows/gitops-deploy.yml@main
+    uses: GDD-Core/esteiras/.github/workflows/gitops-deploy.yml@main
     with:
       chart: srv-java
     secrets:

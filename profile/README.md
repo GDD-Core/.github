@@ -1,4 +1,4 @@
-# tiago-linhares-learning
+# GDD-Core
 
 Test bed do Agentix: esteiras simuladas BIAtech (repo `esteiras`),
 apps demo (`agentix-demo-app`, `dvop-bff-demo`, `dvop-srv-demo`) e o

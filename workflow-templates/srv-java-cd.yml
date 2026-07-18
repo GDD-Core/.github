@@ -9,6 +9,6 @@ on:
 
 jobs:
   esteira:
-    uses: tiago-linhares-learning/esteiras/.github/workflows/cd-srv-java.yml@main
+    uses: GDD-Core/esteiras/.github/workflows/cd-srv-java.yml@main
     with:
       ambiente: ${{ inputs.ambiente }}
