@@ -7,7 +7,7 @@ on:
 
 jobs:
   esteira:
-    uses: GDD-Core/esteiras/.github/workflows/ci-bff-node.yml@main
+    uses: GDD-Core/esteiras-workflows/.github/workflows/ci-bff-node.yml@main
     with:
       node-version: "20"
       publicar: ${{ github.event_name != 'pull_request' }}
@@ -22,7 +22,7 @@ jobs:
   gitops:
     if: ${{ github.event_name != 'pull_request' }}
     needs: esteira
-    uses: GDD-Core/esteiras/.github/workflows/gitops-deploy.yml@main
+    uses: GDD-Core/esteiras-workflows/.github/workflows/gitops-deploy.yml@main
     with:
       chart: bff-node
     secrets:

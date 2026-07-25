@@ -9,6 +9,6 @@ on:
 
 jobs:
   esteira:
-    uses: GDD-Core/esteiras/.github/workflows/cd-bff-node.yml@main
+    uses: GDD-Core/esteiras-workflows/.github/workflows/cd-bff-node.yml@main
     with:
       ambiente: ${{ inputs.ambiente }}
