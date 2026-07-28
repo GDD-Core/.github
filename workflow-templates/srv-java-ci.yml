@@ -20,11 +20,14 @@ jobs:
       NEXUS_DOCKER_USER: ${{ secrets.NEXUS_DOCKER_USER }}
       NEXUS_DOCKER_PASS: ${{ secrets.NEXUS_DOCKER_PASS }}
 
-  gitops:
+  # O deploy E este job: renderiza o manifesto e commita em <app>-config, dispara
+  # o sync explicito no ArgoCD e verifica (Synced/Healthy). Autosync desligado.
+  cd:
     if: ${{ github.event_name != 'pull_request' }}
     needs: esteira
-    uses: GDD-Core/esteiras-workflows/.github/workflows/gitops-deploy.yml@main
+    uses: GDD-Core/esteiras-workflows/.github/workflows/cd.yml@main
     with:
       chart: srv-java
     secrets:
       ESTEIRA_CONFIG_PAT: ${{ secrets.ESTEIRA_CONFIG_PAT }}
+      ARGOCD_AUTH_TOKEN: ${{ secrets.ARGOCD_AUTH_TOKEN }}
